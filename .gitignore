@@ -35,9 +35,6 @@ yarn-error.log*
 !.env.example
 
 # project docs (private / auto-generated)
-BRIEF.md
-KEY_DECISIONS.md
-VIDEO_SCRIPT.md
 AGENTS.md
 
 # vercel
