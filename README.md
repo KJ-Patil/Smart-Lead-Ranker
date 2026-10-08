@@ -31,8 +31,8 @@ Smart Lead Ranker takes a CSV of company names and websites, enriches each one u
 ### Installation
 
 ```bash
-git clone https://github.com/KJ-Patil/smart-lead-ranker.git
-cd smart-lead-ranker
+git clone https://github.com/KJ-Patil/Smart-Lead-Ranker.git
+cd Smart-Lead-Ranker
 npm install
 cp .env.example .env.local
 # Edit .env.local with your API keys (see below)
