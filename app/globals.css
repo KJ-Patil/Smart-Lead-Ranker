@@ -1,26 +1,282 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #b0c4de;
+  --foreground: #1a1a2e;
+  --card: rgba(255, 255, 255, 0.9);
+  --card-foreground: #1a1a2e;
+  --border: rgba(255, 255, 255, 0.5);
+  --input: rgba(255, 255, 255, 0.6);
+  --primary: #4f6ef7;
+  --primary-foreground: #ffffff;
+  --secondary: rgba(241, 245, 249, 0.8);
+  --secondary-foreground: #1a1a2e;
+  --muted: rgba(241, 245, 249, 0.6);
+  --muted-foreground: #64748b;
+  --accent: rgba(241, 245, 249, 0.8);
+  --accent-foreground: #1a1a2e;
+  --destructive: #ef4444;
+  --ring: #4f6ef7;
+  --radius: 1rem;
+
+  --clay-shadow-light:
+    8px 8px 16px rgba(163, 177, 198, 0.5),
+    -6px -6px 14px rgba(255, 255, 255, 0.8),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.6);
+  --clay-shadow-btn:
+    4px 4px 10px rgba(163, 177, 198, 0.4),
+    -3px -3px 8px rgba(255, 255, 255, 0.7),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.5);
+  --clay-shadow-btn-pressed:
+    inset 3px 3px 6px rgba(163, 177, 198, 0.5),
+    inset -2px -2px 5px rgba(255, 255, 255, 0.6);
+  --clay-shadow-input:
+    inset 3px 3px 6px rgba(163, 177, 198, 0.35),
+    inset -2px -2px 5px rgba(255, 255, 255, 0.7);
+  --clay-shadow-tag:
+    3px 3px 6px rgba(163, 177, 198, 0.35),
+    -2px -2px 4px rgba(255, 255, 255, 0.6),
+    inset 1px 1px 1px rgba(255, 255, 255, 0.4);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --background: #131a2e;
+    --foreground: #e2e8f0;
+    --card: rgba(30, 41, 59, 0.75);
+    --card-foreground: #e2e8f0;
+    --border: rgba(51, 65, 85, 0.5);
+    --input: rgba(30, 41, 59, 0.8);
+    --primary: #5b7bf9;
+    --primary-foreground: #ffffff;
+    --secondary: rgba(30, 41, 59, 0.6);
+    --secondary-foreground: #e2e8f0;
+    --muted: rgba(30, 41, 59, 0.5);
+    --muted-foreground: #94a3b8;
+    --accent: rgba(30, 41, 59, 0.6);
+    --accent-foreground: #e2e8f0;
+    --destructive: #ef4444;
+    --ring: #5b7bf9;
+
+    --clay-shadow-light:
+      8px 8px 16px rgba(0, 0, 0, 0.4),
+      -6px -6px 14px rgba(55, 65, 85, 0.25),
+      inset 1px 1px 2px rgba(255, 255, 255, 0.05);
+    --clay-shadow-btn:
+      4px 4px 10px rgba(0, 0, 0, 0.35),
+      -3px -3px 8px rgba(55, 65, 85, 0.2),
+      inset 1px 1px 2px rgba(255, 255, 255, 0.05);
+    --clay-shadow-btn-pressed:
+      inset 3px 3px 6px rgba(0, 0, 0, 0.4),
+      inset -2px -2px 5px rgba(55, 65, 85, 0.15);
+    --clay-shadow-input:
+      inset 3px 3px 6px rgba(0, 0, 0, 0.3),
+      inset -2px -2px 5px rgba(55, 65, 85, 0.15);
+    --clay-shadow-tag:
+      3px 3px 6px rgba(0, 0, 0, 0.3),
+      -2px -2px 4px rgba(55, 65, 85, 0.15),
+      inset 1px 1px 1px rgba(255, 255, 255, 0.03);
+  }
+}
+
+:root[data-theme="dark"] {
+  --background: #131a2e;
+  --foreground: #e2e8f0;
+  --card: rgba(30, 41, 59, 0.75);
+  --card-foreground: #e2e8f0;
+  --border: rgba(51, 65, 85, 0.5);
+  --input: rgba(30, 41, 59, 0.8);
+  --primary: #5b7bf9;
+  --primary-foreground: #ffffff;
+  --secondary: rgba(30, 41, 59, 0.6);
+  --secondary-foreground: #e2e8f0;
+  --muted: rgba(30, 41, 59, 0.5);
+  --muted-foreground: #94a3b8;
+  --accent: rgba(30, 41, 59, 0.6);
+  --accent-foreground: #e2e8f0;
+  --destructive: #ef4444;
+  --ring: #5b7bf9;
+
+  --clay-shadow-light:
+    8px 8px 16px rgba(0, 0, 0, 0.4),
+    -6px -6px 14px rgba(55, 65, 85, 0.25),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.05);
+  --clay-shadow-btn:
+    4px 4px 10px rgba(0, 0, 0, 0.35),
+    -3px -3px 8px rgba(55, 65, 85, 0.2),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.05);
+  --clay-shadow-btn-pressed:
+    inset 3px 3px 6px rgba(0, 0, 0, 0.4),
+    inset -2px -2px 5px rgba(55, 65, 85, 0.15);
+  --clay-shadow-input:
+    inset 3px 3px 6px rgba(0, 0, 0, 0.3),
+    inset -2px -2px 5px rgba(55, 65, 85, 0.15);
+  --clay-shadow-tag:
+    3px 3px 6px rgba(0, 0, 0, 0.3),
+    -2px -2px 4px rgba(55, 65, 85, 0.15),
+    inset 1px 1px 1px rgba(255, 255, 255, 0.03);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-ring: var(--ring);
+  --radius: var(--radius);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  border-color: var(--border);
+}
+
+/* ── Claymorphism base classes ── */
+
+.clay-card {
+  background: var(--card);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--clay-shadow-light);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.clay-card:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    10px 10px 20px rgba(163, 177, 198, 0.5),
+    -8px -8px 16px rgba(255, 255, 255, 0.8),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.6);
+}
+
+:root[data-theme="dark"] .clay-card:hover,
+:root:not([data-theme="light"]) .clay-card:hover {
+  box-shadow:
+    10px 10px 20px rgba(0, 0, 0, 0.45),
+    -8px -8px 16px rgba(55, 65, 85, 0.3),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.05);
+}
+
+.clay-btn {
+  border-radius: 0.75rem;
+  box-shadow: var(--clay-shadow-btn);
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.clay-btn:hover {
+  transform: translateY(-1px);
+}
+
+.clay-btn:active {
+  transform: translateY(0);
+  box-shadow: var(--clay-shadow-btn-pressed);
+}
+
+.clay-input {
+  background: var(--input);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  box-shadow: var(--clay-shadow-input);
+  transition: box-shadow 0.2s ease;
+}
+
+.clay-input:focus {
+  box-shadow:
+    var(--clay-shadow-input),
+    0 0 0 3px rgba(79, 110, 247, 0.15);
+}
+
+.clay-tag {
+  border-radius: 9999px;
+  box-shadow: var(--clay-shadow-tag);
+}
+
+.clay-header {
+  background: var(--card);
+  backdrop-filter: blur(16px);
+  box-shadow:
+    0 4px 12px rgba(163, 177, 198, 0.25),
+    inset 0 1px 1px rgba(255, 255, 255, 0.5);
+}
+
+:root[data-theme="dark"] .clay-header,
+:root:not([data-theme="light"]) .clay-header {
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.3),
+    inset 0 1px 1px rgba(255, 255, 255, 0.03);
+}
+
+.clay-sidebar {
+  background: var(--card);
+  backdrop-filter: blur(12px);
+  box-shadow:
+    4px 0 12px rgba(163, 177, 198, 0.2),
+    inset 1px 0 1px rgba(255, 255, 255, 0.4);
+}
+
+:root[data-theme="dark"] .clay-sidebar,
+:root:not([data-theme="light"]) .clay-sidebar {
+  box-shadow:
+    4px 0 12px rgba(0, 0, 0, 0.25),
+    inset 1px 0 1px rgba(255, 255, 255, 0.03);
+}
+
+.clay-stat {
+  background: var(--secondary);
+  border-radius: 0.75rem;
+  box-shadow:
+    inset 2px 2px 4px rgba(163, 177, 198, 0.25),
+    inset -1px -1px 3px rgba(255, 255, 255, 0.5);
+}
+
+:root[data-theme="dark"] .clay-stat,
+:root:not([data-theme="light"]) .clay-stat {
+  box-shadow:
+    inset 2px 2px 4px rgba(0, 0, 0, 0.2),
+    inset -1px -1px 3px rgba(55, 65, 85, 0.15);
+}
+
+.clay-row {
+  border-radius: 0.75rem;
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.clay-row:hover {
+  box-shadow: var(--clay-shadow-btn);
+  transform: translateY(-1px);
+}
+
+.clay-stepper-dot {
+  box-shadow: var(--clay-shadow-tag);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.clay-stepper-dot:hover {
+  transform: scale(1.05);
+}
+
+.clay-drop-zone {
+  background: var(--input);
+  backdrop-filter: blur(8px);
+  border-radius: var(--radius);
+  box-shadow: var(--clay-shadow-input);
 }
